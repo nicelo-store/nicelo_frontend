@@ -10,7 +10,24 @@ const ProductsSection = () => {
   const latestProducts = products.slice(-4);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <section className="relative min-h-screen bg-amber-70/70">
+        <div className="container mx-auto px-4 py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="animate-pulse">
+                <div className="h-64 bg-stone-200 rounded-2xl mb-4"></div>
+                <div className="space-y-3">
+                  <div className="h-4 bg-stone-200 rounded w-3/4"></div>
+                  <div className="h-3 bg-stone-200 rounded w-1/2"></div>
+                  <div className="h-8 bg-stone-200 rounded w-full mt-4"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (error) {
@@ -45,6 +62,7 @@ const ProductsSection = () => {
                 <img 
                   src={product.image} 
                   alt={product.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent"></div>
