@@ -86,7 +86,7 @@ const Products = () => {
                   </h3>
                   <div className="flex items-center justify-between mt-auto pt-2 sm:pt-3">
                     <div className="flex flex-col">
-                      <span className="text-lg sm:text-2xl font-bold text-amber-600">₹ {parseFloat(product.price).toFixed(2)}</span>
+                      <span className="text-lg sm:text-2xl font-bold text-amber-600">₹ {parseFloat(product.price)}</span>
                       <span className="text-[10px] sm:text-xs text-amber-600/80">Free Shipping</span>
                     </div>
                     <button className="group/btn relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md hover:shadow-amber-200/50 transition-all duration-300">
