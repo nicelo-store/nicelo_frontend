@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Products from './pages/Products'
+import { ProductsProvider } from './context/ProductContext'
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -57,7 +58,9 @@ const AnimatedRoutes = () => {
           </PageTransition>
         } />
       </Routes>
+      
     </AnimatePresence>
+    
   )
 }
 
@@ -135,9 +138,11 @@ const AppContent = () => {
 // Root component with Router
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <ProductsProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </ProductsProvider>
   )
 }
 

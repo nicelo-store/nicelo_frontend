@@ -10,17 +10,17 @@ export default function HeroSection() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Background image */}
+      {/* Background image with mobile optimization */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="https://images.pexels.com/photos/529632/pexels-photo-529632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+          src="https://images.pexels.com/photos/28366271/pexels-photo-28366271/free-photo-of-granola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
           alt="Background" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover md:object-center object-[70%] scale-[1.0] md:scale-100"
         />
       </div>
 
       {/* Orange overlay */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-800/30 via-orange-700/30 to-amber-600/30"></div>
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-800/10 via-orange-700/30 to-amber-600/10"></div>
       
       {/* Subtle animated background texture */}
       <div className="absolute inset-0 w-full h-full opacity-10">
