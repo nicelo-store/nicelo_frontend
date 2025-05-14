@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingCart, Search, X } from 'lucide-react';
+import { CircleArrowOutUpRight, Search, X } from 'lucide-react';
 import { useProducts } from '../context/ProductContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -8,16 +8,41 @@ const Products = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Add effect to handle body scroll
+  // Add effect to handle body scroll and scroll position
   useEffect(() => {
     if (selectedProduct) {
+      // Store current scroll position and lock scroll
+      window.modalScrollPosition = window.pageYOffset;
       document.body.style.overflow = 'hidden';
+      
+      // Fix the body position to prevent jumping
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.modalScrollPosition}px`;
+      document.body.style.width = '100%';
     } else {
-      document.body.style.overflow = 'unset';
+      // Restore scroll position when modal closes
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      
+      // Scroll back to the original position
+      if (window.modalScrollPosition !== undefined) {
+        window.scrollTo(0, window.modalScrollPosition);
+      }
     }
+    
     // Cleanup function
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      
+      // Scroll back to the original position
+      if (window.modalScrollPosition !== undefined) {
+        window.scrollTo(0, window.modalScrollPosition);
+      }
     };
   }, [selectedProduct]);
 
@@ -84,7 +109,7 @@ const Products = () => {
 
         {/* Products Grid */}
         {!loading && !error && (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8">
+          <div className={`grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 transition-all duration-300 ${selectedProduct ? 'blur-sm' : ''}`}>
             {filteredProducts.map((product) => (
               <div 
                 key={product.$id}
@@ -111,11 +136,11 @@ const Products = () => {
                       <span className="text-[10px] sm:text-xs text-amber-600/80">Free Shipping</span>
                     </div>
                     <button 
-                      onClick={() => setSelectedProduct(product)}
+                      onClick={() => handleWhatsAppOrder(product)}
                       className="group/btn relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md hover:shadow-amber-200/50 transition-all duration-300"
                     >
                       <span className="relative z-10 flex items-center gap-1 sm:gap-2 text-xs sm:text-base">
-                        <ShoppingCart size={14} className="group-hover/btn:scale-110 transition-transform duration-300" />
+                        <CircleArrowOutUpRight size={14} className="group-hover/btn:scale-110 transition-transform duration-300" />
                         Buy
                       </span>
                       <span className="absolute inset-0 bg-gradient-to-r from-amber-700 to-amber-600 transform scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-300"></span>
@@ -127,24 +152,28 @@ const Products = () => {
           </div>
         )}
 
-        {/* Product Modal */}
+        {/* Product Modal - Dropdown style */}
         <AnimatePresence>
           {selectedProduct && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProduct(null)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center overflow-y-hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="fixed top-24 left-0 right-0 z-50 flex justify-center px-4"
             >
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-white rounded-3xl overflow-hidden shadow-2xl w-[90%] max-w-lg"
-                style={{ maxHeight: 'calc(100vh - 40px)' }}
+                className="bg-white rounded-3xl overflow-hidden shadow-2xl w-full max-w-lg flex flex-col relative mt-20"
+                style={{ maxHeight: 'calc(100vh - 120px)' }}
               >
+                {/* Decorative top arrow */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-4 h-4 bg-white rotate-45"></div>
+                </div>
+
                 {/* Product Image with Gradient Overlay */}
                 <div className="relative h-72 flex-shrink-0">
                   <img
@@ -219,7 +248,7 @@ const Products = () => {
 
         {/* No Results Message */}
         {!loading && !error && filteredProducts.length === 0 && (
-          <div className="text-center mt-12">
+          <div className={`text-center mt-12 transition-all duration-300 ${selectedProduct ? 'blur-sm' : ''}`}>
             <p className="text-stone-600 text-lg">No products found matching your search.</p>
           </div>
         )}
