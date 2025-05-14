@@ -52,7 +52,7 @@ const ProductsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F28125] via-[#F28125] to-[#F28125]">
               Our Products
             </span>
           </h2>
@@ -60,7 +60,7 @@ const ProductsSection = () => {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.8 }}
-            className="w-24 h-1 bg-gradient-to-r from-amber-600 to-amber-600 mx-auto mb-8 rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-[#F28125] to-[#F28125] mx-auto mb-8 rounded-full"
           />
           <p className="text-stone-700 text-lg max-w-2xl mx-auto">
             Discover our premium selection of dates and dairy products, carefully sourced and delivered to your doorstep.

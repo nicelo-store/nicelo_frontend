@@ -90,7 +90,7 @@ const Products = () => {
         {/* Loading State */}
         {loading && (
           <div className="flex justify-center items-center py-20">
-            <div className="w-16 h-16 border-4 border-amber-200 border-t-amber-600 rounded-full animate-spin"></div>
+            <div className="w-16 h-16 border-4 border-[#F28125]/20 border-t-[#F28125] rounded-full animate-spin"></div>
           </div>
         )}
 
@@ -100,7 +100,7 @@ const Products = () => {
             <p className="text-red-500 text-lg">{error}</p>
             <button 
               onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition-colors"
+              className="mt-4 px-4 py-2 bg-[#F28125] text-white rounded-full hover:bg-[#F28125]/90 transition-colors"
             >
               Try Again
             </button>

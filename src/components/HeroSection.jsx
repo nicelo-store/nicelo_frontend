@@ -80,7 +80,7 @@ export default function HeroSection() {
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5, type: 'spring' }}
-                className="px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-amber-100 text-sm font-medium inline-block"
+                className="px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-[#F28125]/90 text-sm font-medium inline-block"
               >
                 Premium Selection
               </motion.span>
@@ -154,7 +154,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
                 className="bg-white/5 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-lg border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white/10 group"
               >
-                <div className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-br from-[#F28125] to-[#F28125]/80 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <feature.icon className="w-5 sm:w-7 h-5 sm:h-7 text-white" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{feature.title}</h3>
