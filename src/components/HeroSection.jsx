@@ -46,9 +46,9 @@ export default function HeroSection() {
             </span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 mt-2 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-amber-100 to-white drop-shadow-sm">
-              Dates & Dairy
+              nicelo Dry fruits
             </span>
           </h1>
           
