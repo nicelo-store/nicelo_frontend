@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Instagram, Mail, MessageCircle, ChevronRight } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ setIsMenuOpen, isMenuOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -30,9 +29,7 @@ const Header = () => {
         : location.pathname === '/' 
           ? 'bg-transparent' 
           : 'bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 backdrop-blur-md'
-    }`}
-    
-    >
+    }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -71,21 +68,22 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-stone-100 hover:text-stone-200 transition-colors duration-200"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu with enhanced animations */}
+        {/* Mobile Menu */}
         <div 
           className={`md:hidden fixed inset-x-0 top-20 transition-all duration-300 ease-in-out transform p-4 ${
-            isMobileMenuOpen 
+            isMenuOpen 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 -translate-y-4 pointer-events-none'
           }`}
+          style={{ zIndex: 50 }}
         >
-          <div className="bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 backdrop-blur-md shadow-lg rounded-t-2xl rounded-b-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 shadow-lg rounded-t-2xl rounded-b-2xl overflow-hidden">
             <nav className="px-4 py-6">
               <div className="space-y-2">
                 {navLinks.map((link, index) => (
@@ -97,9 +95,9 @@ const Header = () => {
                     }`}
                     style={{
                       animationDelay: `${index * 50}ms`,
-                      animation: isMobileMenuOpen ? 'slideIn 0.3s ease-out forwards' : 'none'
+                      animation: isMenuOpen ? 'slideIn 0.3s ease-out forwards' : 'none'
                     }}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     <span className="flex items-center">
                       <span className={`w-1.5 h-1.5 rounded-full mr-3 transition-all duration-300 ${

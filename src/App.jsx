@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Products from './pages/Products'
-// import About from './pages/About'
-// import Contact from './pages/Contact'
 
 // Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation()
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
 
@@ -57,6 +55,16 @@ const AnimatedRoutes = () => {
 
 // Main App component
 const AppContent = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  React.useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMenuOpen]);
+
   return (
     <div className="App min-h-screen bg-gradient-to-br from-stone-50 via-stone-100 to-stone-50 relative">
       {/* Global decorative elements */}
@@ -67,8 +75,13 @@ const AppContent = () => {
         <div className="absolute inset-0 bg-[radial-gradient(#4ade8011_1px,transparent_1px)] [background-size:20px_20px] opacity-10"></div>
       </div>
 
-      <Header />
-      <main className="pt-0">
+      {/* Blur overlay that appears when menu is open */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black/10 backdrop-blur-sm z-40 transition-all duration-300"></div>
+      )}
+
+      <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
+      <main className={`pt-0 transition-all duration-300 ${isMenuOpen ? 'blur-sm' : 'blur-none'}`}>
         <AnimatedRoutes />
       </main>
     </div>
