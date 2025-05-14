@@ -126,10 +126,15 @@ const Products = () => {
                 </div>
 
                 {/* Product Info */}
-                <div className="p-3 sm:p-6 flex flex-col h-[110px] sm:h-[150px]">
+                <div className="p-3 sm:p-6 flex flex-col min-h-[150px] sm:min-h-[180px]">
                   <h3 className="text-base sm:text-xl font-semibold text-amber-700 mb-3 sm:mb-4 group-hover:text-amber-600 transition-colors duration-300 line-clamp-1">
                     {product.name}
                   </h3>
+                  {product.description && (
+                    <span className="inline-flex px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs sm:text-sm mb-2 line-clamp-1 border border-amber-200/50 w-fit">
+                      {product.description}
+                    </span>
+                  )}
                   <div className="flex items-center justify-between mt-auto pt-2 sm:pt-3">
                     <div className="flex flex-col">
                       <span className="text-lg sm:text-2xl font-bold text-amber-600">₹ {parseFloat(product.price)}</span>
