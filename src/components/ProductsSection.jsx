@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, ChevronRight } from 'lucide-react';
+import { CircleArrowOutUpRight, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
 import { motion } from 'framer-motion';
@@ -7,6 +7,12 @@ import { motion } from 'framer-motion';
 const ProductsSection = () => {
   const { products, loading, error } = useProducts();
   const latestProducts = products.slice(-4);
+
+  const handleWhatsAppOrder = (product) => {
+    const message = `Hi, I'm interested in ordering:\n\nProduct ID: ${product.$id}\nName: ${product.name}\nPrice: ₹${product.price}\n${product.description ? `\nDescription: ${product.description}` : ''}`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/919074760272?text=${encodedMessage}`, '_blank');
+  };
 
   // Skeleton loader component
   const ProductSkeleton = () => (
@@ -80,11 +86,10 @@ const ProductsSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -10 }}
-                className="group relative bg-stone-100/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-stone-200 shadow-lg hover:shadow-amber-200/50 transition-all duration-500"
+                className="group relative bg-white/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-amber-200/50 shadow-lg hover:shadow-xl hover:shadow-amber-200/30 transition-all duration-500 hover:-translate-y-2"
               >
                 {/* Product Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 sm:h-64 overflow-hidden">
                   <motion.img
                     src={product.image}
                     alt={product.name}
@@ -93,28 +98,40 @@ const ProductsSection = () => {
                     transition={{ duration: 0.5 }}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  
+                  {/* Floating Price Badge */}
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-amber-200/50 shadow-lg transform group-hover:scale-110 transition-all duration-300">
+                    <span className="text-lg sm:text-lg font-bold text-amber-600">₹ {parseFloat(product.price)}</span>
+                  </div>
                 </div>
 
                 {/* Product Info */}
-                <div className="p-6 flex flex-col min-h-[180px] bg-gradient-to-b from-stone-100 to-amber-50">
-                  <h3 className="text-xl font-semibold text-amber-700 mb-2 group-hover:text-orange-600 transition-colors duration-300">
+                <div className="p-5 sm:p-5 flex flex-col min-h-[130px] sm:min-h-[150px] relative">
+                  {/* Decorative Corner */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-100/20 via-amber-50/10 to-transparent rounded-bl-3xl"></div>
+                  
+                  <h3 className="text-lg sm:text-xl font-semibold text-amber-700 mb-2 group-hover:text-amber-600 transition-colors duration-300 line-clamp-1 relative">
                     {product.name}
                   </h3>
-                  <p className="text-stone-600 mb-4 text-sm flex-grow line-clamp-3">
-                    {product.description}
-                  </p>
+                  
+                  {product.description && (
+                    <span className="inline-flex px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-sm sm:text-sm mb-3 w-fit border border-amber-200/50 hover:bg-amber-100/50 transition-colors duration-300">
+                      {product.description}
+                    </span>
+                  )}
+                  
                   <div className="flex items-center justify-between mt-auto">
-                    <div className="flex flex-col">
-                      <span className="text-2xl font-bold text-amber-600">${product.price}</span>
-                      <span className="text-xs text-amber-600/80">Free Shipping</span>
-                    </div>
-                    <button className="group/btn relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-orange-800 text-white px-4 py-2 rounded-full shadow-md hover:shadow-amber-200/50 transition-all duration-300">
-                      <span className="relative z-10 flex items-center gap-2">
-                        <ShoppingCart size={18} className="group-hover/btn:scale-110 transition-transform duration-300" />
-                        Buy
+                    <span className="text-xs sm:text-xs text-amber-600/80 font-medium">Free Shipping</span>
+                    <button 
+                      onClick={() => handleWhatsAppOrder(product)}
+                      className="group/btn relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-4 sm:px-4 py-2 sm:py-2 rounded-full shadow-md hover:shadow-lg hover:shadow-amber-200/30 transition-all duration-300"
+                    >
+                      <span className="relative z-10 flex items-center gap-2 sm:gap-2 text-sm sm:text-sm">
+                        <CircleArrowOutUpRight size={16} className="group-hover/btn:scale-110 transition-transform duration-300" />
+                        Buy Now
                       </span>
-                      <span className="absolute inset-0 bg-gradient-to-r from-amber-700 to-amber-800 transform scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-300"></span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-amber-700 to-amber-600 transform scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-300"></span>
                     </button>
                   </div>
                 </div>
