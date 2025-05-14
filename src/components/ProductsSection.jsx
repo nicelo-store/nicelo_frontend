@@ -72,14 +72,14 @@ const ProductsSection = () => {
               </div>
 
               {/* Product Info */}
-              <div className="p-6 flex flex-col h-[180px] bg-gradient-to-b from-stone-100 to-amber-50">
+              <div className="p-6 flex flex-col min-h-[180px] bg-gradient-to-b from-stone-100 to-amber-50">
                 <h3 className="text-xl font-semibold text-amber-700 mb-2 group-hover:text-orange-600 transition-colors duration-300">
                   {product.name}
                 </h3>
-                <p className="text-stone-600 mb-5 text-sm text-m line-clamp-2 flex-grow">
+                <p className="text-stone-600 mb-4 text-sm flex-grow line-clamp-3">
                   {product.description}
                 </p>
-                <div className="flex items-center justify-between mt-auto -mt-3">
+                <div className="flex items-center justify-between mt-auto">
                   <div className="flex flex-col">
                     <span className="text-2xl font-bold text-amber-600">${product.price}</span>
                     <span className="text-xs text-amber-600/80">Free Shipping</span>
