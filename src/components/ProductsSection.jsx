@@ -1,43 +1,22 @@
 import React from 'react';
-import { ShoppingCart, Heart, Star, ChevronRight } from 'lucide-react';
+import { ShoppingCart, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const products = [
-  {
-    id: 1,
-    name: "Premium Medjool Dates",
-    price: 24.99,
-    image: "https://i.pinimg.com/736x/23/fa/e8/23fae875b4e6728ad50810c40f8dc08e.jpg",
-    description: "Sweet and succulent Medjool dates, perfect for snacking",
-   
-  },
-  {
-    id: 2,
-    name: "Organic Camel Milk",
-    price: 19.99,
-    image: "https://i.pinimg.com/736x/7e/53/96/7e5396566b15340a539424baf54bd46c.jpg",
-    description: "Rich and nutritious camel milk, packed with vitamins",
-    
-  },
-  {
-    id: 3,
-    name: "Artisanal Cheese",
-    price: 29.99,
-    image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hlZXNlfGVufDB8fDB8fHww",
-    description: "Handcrafted cheese made with traditional methods",
-    
-  },
-  {
-    id: 4,
-    name: "Date Syrup",
-    price: 14.99,
-    image: "https://i.pinimg.com/736x/3a/78/81/3a78811ee6f53ed964ae66da0f7e1aa5.jpg",
-    description: "Natural sweetener made from premium dates",
-    
-  }
-];
+import { useProducts } from '../context/ProductContext';
 
 const ProductsSection = () => {
+  const { products, loading, error } = useProducts();
+
+  // Get the latest 4 products
+  const latestProducts = products.slice(-4);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <section className="relative min-h-screen bg-amber-70/70">
       <div className="container mx-auto px-4 py-20">
@@ -56,9 +35,9 @@ const ProductsSection = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
+          {latestProducts.map((product) => (
             <div 
-              key={product.id}
+              key={product.$id}
               className="group relative bg-stone-100/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-stone-200 shadow-lg hover:shadow-amber-200/50 transition-all duration-500 hover:-translate-y-2"
             >
               {/* Product Image */}
@@ -93,8 +72,6 @@ const ProductsSection = () => {
                   </button>
                 </div>
               </div>
-
-              {/* Hover Overlay */}
             </div>
           ))}
         </div>
