@@ -62,7 +62,7 @@ export default function About() {
     <div className="bg-amber-50">
       {/* Hero Section */}
       <section className="relative bg-cover bg-center" style={{
-        backgroundImage: 'url("https://fra.cloud.appwrite.io/v1/storage/buckets/68245788001634364574/files/68256db40008f317a7c6/view?project=nicelobackend2025&mode=user")',
+        backgroundImage: 'url("https://fra.cloud.appwrite.io/v1/storage/buckets/68245788001634364574/files/682571140026431691ea/view?project=nicelobackend2025&mode=user")',
         height: '50vh', // Reduced height for mobile
         minHeight: '400px' // Minimum height to ensure content visibility
       }}>
