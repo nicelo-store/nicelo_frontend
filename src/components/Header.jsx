@@ -91,7 +91,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
 
       {/* Mobile Sidebar */}
       <div 
-        className={`md:hidden fixed inset-y-0 right-0 w-80 max-w-[90%] bg-white shadow-2xl z-50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] transform ${
+        className={`md:hidden fixed inset-y-0 right-0 w-full max-w-full bg-white shadow-2xl z-50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] transform ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
