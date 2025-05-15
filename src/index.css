@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Critical mobile optimizations */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* Hardware acceleration for animated elements */
+.animate-gpu {
+  transform: translateZ(0);
+}
+
+/* Remove tap highlight on mobile */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for mobile viewport units */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Optimize image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
 
  @keyframes gradient {
    0% {background-position: 0% 50%}
