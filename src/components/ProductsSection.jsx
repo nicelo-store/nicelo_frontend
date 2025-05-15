@@ -152,7 +152,7 @@ const ProductsSection = () => {
             className="group relative overflow-hidden bg-stone-100/80 backdrop-blur-md border border-stone-200 hover:border-amber-300 hover:bg-amber-50 text-amber-700 px-8 py-4 rounded-full shadow-sm hover:shadow-amber-200/50 transition-all duration-300 transform hover:-translate-y-1"
           >
             <span className="relative z-10 flex items-center gap-2 text-lg font-medium">
-              View More Products
+              View More 
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-amber-50/50 to-stone-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

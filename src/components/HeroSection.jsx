@@ -26,7 +26,7 @@ export default function EnhancedHeroSection() {
       <div 
         className="absolute inset-0 bg-cover bg-center w-full h-full"
         style={{ 
-          backgroundImage: `url(https://images.pexels.com/photos/28366271/pexels-photo-28366271/free-photo-of-granola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
+          backgroundImage: `url(https://fra.cloud.appwrite.io/v1/storage/buckets/68245788001634364574/files/6825c81b00101e86ccea/view?project=nicelobackend2025&mode=user)`,
           transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.05}px)` 
         }}
       />

@@ -47,9 +47,11 @@ const Products = () => {
   }, [selectedProduct]);
 
   // Filter products based on search query
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredProducts = products
+    .sort((a, b) => new Date(b.$createdAt) - new Date(a.$createdAt)) // Convert to Date objects for proper comparison
+    .filter(product =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   const handleWhatsAppOrder = (product) => {
     const message = `Hi, I'm interested in ordering:\n\nProduct ID: ${product.$id}\nName: ${product.name}\nPrice: ₹${product.price}\n${product.description ? `\nDescription: ${product.description}` : ''}`;
