@@ -83,15 +83,15 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
           }`}
           style={{ zIndex: 50 }}
         >
-          <div className="bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 shadow-lg rounded-t-2xl rounded-b-2xl overflow-hidden">
+          <div className="bg-white shadow-lg rounded-t-2xl rounded-b-2xl overflow-hidden">
             <nav className="px-4 py-6">
               <div className="space-y-2">
                 {navLinks.map((link, index) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`group flex items-center justify-between p-3 rounded-xl text-stone-100 hover:bg-stone-100/10 transition-all duration-200 ${
-                      location.pathname === link.path ? 'bg-stone-100/10 font-medium' : ''
+                    className={`group flex items-center justify-between p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 ${
+                      location.pathname === link.path ? 'bg-amber-50 font-medium' : ''
                     }`}
                     style={{
                       animationDelay: `${index * 50}ms`,
@@ -101,13 +101,13 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
                   >
                     <span className="flex items-center">
                       <span className={`w-1.5 h-1.5 rounded-full mr-3 transition-all duration-300 ${
-                        location.pathname === link.path ? 'bg-stone-100 scale-100' : 'bg-stone-100/50 scale-75 group-hover:scale-100'
+                        location.pathname === link.path ? 'bg-amber-600 scale-100' : 'bg-amber-400 scale-75 group-hover:scale-100'
                       }`}></span>
                       {link.label}
                     </span>
                     <ChevronRight 
                       size={18} 
-                      className={`transform transition-transform duration-300 ${
+                      className={`text-amber-600 transform transition-transform duration-300 ${
                         location.pathname === link.path ? 'translate-x-0' : '-translate-x-1 group-hover:translate-x-0'
                       }`}
                     />
@@ -115,17 +115,17 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-stone-100/10">
+              <div className="mt-6 pt-6 border-t border-amber-100">
                 <div className="grid grid-cols-3 gap-4">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-stone-100 hover:bg-stone-100/10 transition-all duration-200 group">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
                     <Instagram size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                     <span className="mt-1 text-xs opacity-80">Instagram</span>
                   </a>
-                  <a href="mailto:contact@nicelo.com" className="flex flex-col items-center p-3 rounded-xl text-stone-100 hover:bg-stone-100/10 transition-all duration-200 group">
+                  <a href="mailto:contact@nicelo.com" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
                     <Mail size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                     <span className="mt-1 text-xs opacity-80">Email</span>
                   </a>
-                  <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-stone-100 hover:bg-stone-100/10 transition-all duration-200 group">
+                  <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
                     <MessageCircle size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                     <span className="mt-1 text-xs opacity-80">WhatsApp</span>
                   </a>
