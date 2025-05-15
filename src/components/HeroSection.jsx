@@ -61,7 +61,7 @@ export default function EnhancedHeroSection() {
           </div>
           
           {/* Main heading with gradient */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-center mb-8 tracking-tight">
+          <h1 className="text-5xl sm:text-4xl md:text-7xl lg:text-8xl font-extrabold text-center mb-8 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-100 via-white to-amber-100 drop-shadow-md leading-tight">
               Smart Snacking
             </span>
