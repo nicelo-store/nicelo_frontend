@@ -33,8 +33,13 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-stone-100">
-            nicelo
+          <Link to="/" className="flex items-center">
+            <img 
+              src="https://fra.cloud.appwrite.io/v1/storage/buckets/68245788001634364574/files/68257f85000ea9a38d51/view?project=nicelobackend2025&mode=user" 
+              alt="Nicelo" 
+              className="h-7 w-auto"
+              style={{ marginTop: '-8px' }}
+            />
           </Link>
 
           {/* Desktop Navigation */}

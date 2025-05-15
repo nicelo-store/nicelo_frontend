@@ -59,7 +59,7 @@ export default function About() {
   };
 
   return (
-    <div className="bg-amber-50">
+    <div className="bg-amber-50 ">
       {/* Hero Section */}
       <section className="relative bg-cover bg-center" style={{
         backgroundImage: 'url("https://fra.cloud.appwrite.io/v1/storage/buckets/68245788001634364574/files/682571140026431691ea/view?project=nicelobackend2025&mode=user")',

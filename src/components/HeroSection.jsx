@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronRight, Star, Truck, Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ChevronRight, Star, Truck, Shield, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-export default function HeroSection() {
+export default function EnhancedHeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
@@ -10,160 +10,141 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Preload background image
+  // Parallax effect for scroll
+  const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    const img = new Image();
-    img.src = "https://images.pexels.com/photos/28366271/pexels-photo-28366271/free-photo-of-granola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="relative overflow-hidden">
-      {/* Background image with loading state */}
-      <div className="absolute inset-0 w-full h-full">
-        <motion.img 
-          src="https://images.pexels.com/photos/28366271/pexels-photo-28366271/free-photo-of-granola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-          alt="Background" 
-          className="w-full h-full object-cover md:object-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          style={{
-            objectPosition: 'center center',
-            minHeight: '100%',
-            minWidth: '100%'
-          }}
-        />
-      </div>
-
-      {/* Loading overlay that fades out */}
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute inset-0 bg-white z-10"
+    <div className="relative overflow-hidden flex flex-col justify-center">
+      {/* Single Background Image with Parallax */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center w-full h-full"
+        style={{ 
+          backgroundImage: `url(https://images.pexels.com/photos/28366271/pexels-photo-28366271/free-photo-of-granola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
+          transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.05}px)` 
+        }}
       />
 
-      {/* Content layers */}
-      <div className="relative">
-        {/* Orange overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-800/10 via-orange-700/30 to-amber-600/10"
-        />
-        
-        {/* Abstract shapes */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-amber-500/20 to-amber-700/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-orange-500/20 to-amber-700/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"
-        />
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-900/70 via-orange-800/60 to-amber-700/70 z-10" />
+      <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Main content with staggered animations */}
-        <div className="container mx-auto px-4 py-24 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center mt-10"
-          >
-            <div className="mb-3 inline-block">
-              <motion.span
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.5, type: 'spring' }}
-                className="px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-[#F28125]/90 text-sm font-medium inline-block"
-              >
-                Premium Selection
-              </motion.span>
-            </div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 mt-2 tracking-tight"
-            >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-amber-100 to-white drop-shadow-sm">
-                nicelo Dry fruits
-              </span>
-            </motion.h1>
-            
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="w-24 h-0.5 bg-gradient-to-r from-white/20 via-white to-white/20 mx-auto mb-8 rounded-full"
-            />
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="text-lg sm:text-xl md:text-2xl text-white/90 mb-12 leading-relaxed font-light max-w-3xl mx-auto"
-            >
-              Discover our <span className="text-white font-medium underline decoration-amber-300 decoration-2 underline-offset-4">artisanal selection</span> of premium dates and 
-              dairy products, ethically sourced and delivered fresh to your door.
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center mb-12 px-4 sm:px-0"
-            >
-              <button className="group relative bg-white hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-white/20 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-                <span className="relative z-10 flex items-center justify-center gap-2 text-amber-800 font-medium text-sm sm:text-base">
-                  Shop Collection
-                  <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-amber-100/50 to-white transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-              </button>
-              
-              <button className="relative overflow-hidden group bg-transparent hover:bg-white/10 backdrop-blur-md text-white font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 border border-white/20 text-sm sm:text-base">
-                <span className="relative z-10">100% Natural</span>
-                <span className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-              </button>
-            </motion.div>
-          </motion.div>
-
-          {/* Feature cards with staggered loading */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-4 px-4 sm:px-0"
-          >
-            {[
-              { icon: Star, title: "Premium Quality", description: "Handpicked dates and dairy products from the finest sources, guaranteed freshness with every order." },
-              { icon: Truck, title: "Fast Delivery", description: "Quick and reliable delivery to your location with real-time tracking and flexible delivery options." },
-              { icon: Shield, title: "Secure Shopping", description: "Safe and secure payment options for your peace of mind with encrypted transactions and buyer protection." }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-                className="bg-white/5 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-lg border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white/10 group"
-              >
-                <div className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-br from-[#F28125] to-[#F28125]/80 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <feature.icon className="w-5 sm:w-7 h-5 sm:h-7 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{feature.title}</h3>
-                <p className="text-white/70 leading-relaxed font-light text-sm sm:text-base">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Animated patterns */}
+      <div className="absolute inset-0 z-10">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
+          <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-amber-500 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+          <div className="absolute top-3/4 left-3/4 w-1/2 h-1/2 bg-gradient-to-br from-orange-500 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
+          <div className="absolute top-1/4 right-1/4 w-1/3 h-1/3 bg-gradient-to-br from-amber-300 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
         </div>
       </div>
+
+      {/* Noise texture overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjA1IDAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIwLjgiLz48L3N2Zz4=')] opacity-30 mix-blend-overlay pointer-events-none z-20" />
+
+      {/* Content Section */}
+      <div className="container mx-auto px-4 md:px-6 py-12 sm:py-20 relative z-30">
+        <div className="max-w-5xl mx-auto">
+          {/* Animated badge */}
+          <div className="overflow-hidden mb-6 mt-10">
+            <div className="transform translate-y-0 transition-transform duration-700 ease-out flex justify-center">
+              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-amber-400/90 to-orange-400/90 text-amber-950 text-sm font-semibold inline-flex items-center gap-2 shadow-lg shadow-amber-500/20 border border-amber-300/30">
+                <span className="w-2 h-2 bg-amber-100 rounded-full animate-ping inline-block" />
+                Premium Selection
+              </span>
+            </div>
+          </div>
+          
+          {/* Main heading with gradient */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-center mb-8 tracking-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-100 via-white to-amber-100 drop-shadow-md leading-tight">
+              Smart Snacking
+            </span>
+          </h1>
+          
+          {/* Animated separator */}
+          <div className="relative flex justify-center mb-8">
+            <div className="w-36 h-1 bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0 rounded-full" />
+            <div className="absolute w-16 h-1 bg-white/80 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+          </div>
+          
+          {/* Enhanced description */}
+          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-12 leading-relaxed font-light max-w-3xl mx-auto text-center">
+            Discover our <span className="text-amber-300 font-medium">artisanal selection</span> of premium dates and 
+            dry fruits, ethically sourced and delivered fresh to your door.
+          </p>
+          
+          {/* Interactive CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16 px-4 sm:px-0">
+            <button className="group relative bg-gradient-to-r from-amber-400 to-orange-500 px-8 py-4 rounded-full shadow-lg shadow-amber-600/30 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+            <Link 
+            to="/products" className="relative z-10 flex items-center justify-center gap-2 text-amber-950 font-semibold">
+
+              
+                Shop Items
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+              
+              </Link>
+              <span className="absolute inset-0 bg-gradient-to-r from-amber-300 to-amber-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+            </button>
+            
+            <button className="relative overflow-hidden group bg-transparent hover:bg-white/10 backdrop-blur-md text-white font-medium px-8 py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 border border-white/30 hover:border-white/50">
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                100% Natural
+                <div className="w-2 h-2 bg-green-400 rounded-full group-hover:animate-ping" />
+              </span>
+              <span className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+            </button>
+          </div>
+        </div>
+
+        {/* Enhanced Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-8 px-4 sm:px-0">
+          {[
+            { 
+              icon: Star, 
+              title: "Premium Quality", 
+              description: "Handpicked dates and dairy products from the finest sources, guaranteed freshness with every order.",
+              gradient: "from-amber-400 to-orange-400"
+            },
+            { 
+              icon: Truck, 
+              title: "Fast Delivery", 
+              description: "Quick and reliable delivery to your location with real-time tracking and flexible delivery options.",
+              gradient: "from-orange-400 to-amber-500"
+            },
+            { 
+              icon: Shield, 
+              title: "Secure Shopping", 
+              description: "Safe and secure payment options for your peace of mind with encrypted transactions and buyer protection.",
+              gradient: "from-amber-500 to-orange-400"
+            }
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="group bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-white/20 transform transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 hover:border-white/30"
+              style={{ 
+                transitionDelay: `${index * 100}ms`,
+                animation: `fadeIn 0.8s ease-out ${0.8 + index * 0.2}s both`
+              }}
+            >
+              <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-amber-600/20`}>
+                <feature.icon className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-amber-200 transition-colors duration-300">{feature.title}</h3>
+              <p className="text-white/80 leading-relaxed text-lg">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/50 to-transparent z-20" />
     </div>
   );
 }
