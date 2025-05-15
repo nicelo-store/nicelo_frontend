@@ -26,7 +26,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-gradient-to-r from-[#F28125] via-[#F28125] to-[#F28125] backdrop-blur-md shadow-lg' 
-        : location.pathname === '/' 
+        : location.pathname === '/' || location.pathname === '/about'
           ? 'bg-transparent' 
           : 'bg-gradient-to-r from-[#F28125] via-[#F28125] to-[#F28125] backdrop-blur-md'
     }`}>

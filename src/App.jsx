@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import { ProductsProvider } from './context/ProductContext'
+import About from './pages/About'
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -58,7 +59,14 @@ const AnimatedRoutes = () => {
             <Products />
           </PageTransition>
         } />
+        <Route path="/about" element={
+          <PageTransition>
+            <About />
+          </PageTransition>
+        } />
+      
       </Routes>
+      
       
     </AnimatePresence>
     
