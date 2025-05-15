@@ -84,21 +84,28 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
 
       {/* Mobile Sidebar */}
       <div 
-        className={`md:hidden fixed inset-y-0 right-0 w-64 bg-white shadow-xl z-50 transition-all duration-300 ease-in-out transform ${
+        className={`md:hidden fixed inset-y-0 right-0 w-74 bg-white shadow-xl z-50 transition-all duration-300 ease-in-out transform ${
           isMenuOpen 
             ? 'translate-x-0' 
             : 'translate-x-full'
         }`}
-        style={{ top: '64px' }}
       >
-        <div className="h-full overflow-y-auto p-4">
+        <div className="h-full overflow-y-auto p-4 pt-20">
+          {/* Close Button */}
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="absolute top-4 right-4 p-2 text-stone-600 hover:text-stone-800 hover:bg-stone-50 rounded-lg transition-all duration-200"
+          >
+            <X size={24} />
+          </button>
+
           <nav className="space-y-2">
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`group flex items-center justify-between p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 ${
-                  location.pathname === link.path ? 'bg-amber-50 font-medium' : ''
+                className={`group flex items-center justify-between p-3 rounded-xl text-stone-600 hover:bg-stone-50 transition-all duration-200 ${
+                  location.pathname === link.path ? 'bg-stone-50 font-medium' : ''
                 }`}
                 style={{
                   animationDelay: `${index * 50}ms`,
@@ -108,13 +115,13 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
               >
                 <span className="flex items-center">
                   <span className={`w-1.5 h-1.5 rounded-full mr-3 transition-all duration-300 ${
-                    location.pathname === link.path ? 'bg-amber-600 scale-100' : 'bg-amber-400 scale-75 group-hover:scale-100'
+                    location.pathname === link.path ? 'bg-stone-600 scale-100' : 'bg-stone-400 scale-75 group-hover:scale-100'
                   }`}></span>
                   {link.label}
                 </span>
                 <ChevronRight 
                   size={18} 
-                  className={`text-amber-600 transform transition-transform duration-300 ${
+                  className={`text-stone-600 transform transition-transform duration-300 ${
                     location.pathname === link.path ? 'translate-x-0' : '-translate-x-1 group-hover:translate-x-0'
                   }`}
                 />
@@ -122,17 +129,17 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
             ))}
           </nav>
 
-          <div className="mt-6 pt-6 border-t border-amber-100">
+          <div className="mt-6 pt-6 border-t border-stone-100">
             <div className="grid grid-cols-3 gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-stone-600 hover:bg-stone-50 transition-all duration-200 group">
                 <Instagram size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                 <span className="mt-1 text-xs opacity-80">Instagram</span>
               </a>
-              <a href="mailto:info@nicelofoods.com" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
+              <a href="mailto:info@nicelofoods.com" className="flex flex-col items-center p-3 rounded-xl text-stone-600 hover:bg-stone-50 transition-all duration-200 group">
                 <Mail size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                 <span className="mt-1 text-xs opacity-80">Email</span>
               </a>
-              <a href="https://wa.me/+919074760272" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
+              <a href="https://wa.me/+919074760272" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-stone-600 hover:bg-stone-50 transition-all duration-200 group">
                 <MessageCircle size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                 <span className="mt-1 text-xs opacity-80">WhatsApp</span>
               </a>
