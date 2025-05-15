@@ -19,7 +19,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
     { path: '/', label: 'Home' },
     { path: '/products', label: 'Products' },
     { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' }
+    { path: 'tel:+919074760272', label: 'Contact' }
   ];
 
   return (
@@ -60,7 +60,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
             <a href="mailto:contact@nicelo.com" className="text-stone-100 hover:text-stone-200 transition-colors duration-200">
               <Mail size={20} />
             </a>
-            <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="text-stone-100 hover:text-stone-200 transition-colors duration-200">
+            <a href="https://wa.me/+919074760272" target="_blank" rel="noopener noreferrer" className="text-stone-100 hover:text-stone-200 transition-colors duration-200">
               <MessageCircle size={20} />
             </a>
           </div>
@@ -121,11 +121,11 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
                     <Instagram size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                     <span className="mt-1 text-xs opacity-80">Instagram</span>
                   </a>
-                  <a href="mailto:contact@nicelo.com" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
+                  <a href="mailto:info@nicelofoods.com" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
                     <Mail size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                     <span className="mt-1 text-xs opacity-80">Email</span>
                   </a>
-                  <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
+                  <a href="https://wa.me/+919074760272" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-3 rounded-xl text-amber-600 hover:bg-amber-50 transition-all duration-200 group">
                     <MessageCircle size={20} className="transform transition-transform duration-300 group-hover:scale-110" />
                     <span className="mt-1 text-xs opacity-80">WhatsApp</span>
                   </a>
