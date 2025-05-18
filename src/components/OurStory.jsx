@@ -50,9 +50,13 @@ const OurStory = () => {
             className={`space-y-8 transform transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
           >
             <div>
-              <p className="text-amber-600 font-semibold mb-2 tracking-wider">OUR JOURNEY</p>
+              <p className="text-amber-600 font-semibold mb-2 tracking-wider"
+              style={{'font-family':'SmileCandy'}}
+              >OUR JOURNEY</p>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-800">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600"
+                style={{'font-family':'SmileCandy'}}
+                >
                   Our Story
                 </span>
               </h2>

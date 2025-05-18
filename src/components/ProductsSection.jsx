@@ -58,7 +58,9 @@ const ProductsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F28125] via-[#F28125] to-[#F28125]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F28125] via-[#F28125] to-[#F28125]"
+            style={{'font-family':'SmileCandy'}}
+            >
               Our Products
             </span>
           </h2>

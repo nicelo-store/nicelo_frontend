@@ -61,8 +61,9 @@ export default function EnhancedHeroSection() {
           </div>
           
           {/* Main heading with gradient */}
-          <h1 className="text-4xl sm:text-4xl md:text-7xl lg:text-8xl font-extrabold text-center mb-8 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-100 via-white to-amber-100 drop-shadow-md leading-tight">
+          <h1 className="text-4xl sm:text-4xl md:text-7xl lg:text-8xl font-[Unageo-Black] text-center mb-8 tracking-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-100 via-white to-amber-100 drop-shadow-md leading-tight" 
+            style={{'font-family':'SmileCandy'}}>
               Smart Snacking
             </span>
           </h1>

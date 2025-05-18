@@ -64,8 +64,9 @@ const Products = () => {
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-br from-amber-700 via-orange-600 to-amber-600">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-6 font-[Unageo-Black]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-amber-700 via-orange-600 to-amber-600"
+            style={{'font-family':'SmileCandy'}}>
               Our Store
             </span>
           </h1>

@@ -58,3 +58,10 @@ img {
  .animate-fadeIn {
    animation: fadeIn 0.3s ease forwards;
  }
+
+ @font-face {
+  font-family: "SmileCandy";
+  src: url("/font/Unageo-Black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

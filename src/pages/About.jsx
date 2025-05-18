@@ -78,7 +78,9 @@ export default function About() {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-amber-800 mb-4 md:mb-6">Our Mission</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-amber-800 mb-4 md:mb-6"
+            style={{'font-family':'SmileCandy'}}
+            >Our Mission</h2>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed px-4">
               At Nicelo, we make healthy living simple and delicious. Our dry fruits are 100% natural, 
               with no added sugar or preservatives. Perfect for snacking, blending, or baking - 
@@ -87,7 +89,9 @@ export default function About() {
           </div>
           
           <div className="mt-12 md:mt-16">
-            <h3 className="text-xl md:text-2xl font-bold text-center text-amber-800 mb-6 md:mb-8">
+            <h3 className="text-xl md:text-2xl font-bold text-center text-amber-800 mb-6 md:mb-8"
+            style={{'font-family':'SmileCandy'}}
+            >
               What Makes Nicelo Special?
             </h3>
             <p className="text-center text-base md:text-lg text-gray-700 mb-8 md:mb-12 px-4">
@@ -112,7 +116,9 @@ export default function About() {
       {/* Products Showcase */}
       <section className="py-12 md:py-16 bg-amber-50">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-amber-800 mb-8 md:mb-12">Our Products</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-amber-800 mb-8 md:mb-12"
+          style={{'font-family':'SmileCandy'}}
+          >Our Products</h2>
           
           <div className="flex flex-col space-y-8 md:space-y-12">
             {products.map((product, index) => (
