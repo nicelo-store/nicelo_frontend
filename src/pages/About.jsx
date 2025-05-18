@@ -81,7 +81,7 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-bold text-amber-800 mb-4 md:mb-6"
             style={{'font-family':'SmileCandy'}}
             >Our Mission</h2>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed px-4">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed px-4 font-['MB-vintage']">
               At Nicelo, we make healthy living simple and delicious. Our dry fruits are 100% natural, 
               with no added sugar or preservatives. Perfect for snacking, blending, or baking - 
               pure goodness in every bite. Naturally nourishing. Effortlessly wholesome.
@@ -94,7 +94,7 @@ export default function About() {
             >
               What Makes Nicelo Special?
             </h3>
-            <p className="text-center text-base md:text-lg text-gray-700 mb-8 md:mb-12 px-4">
+            <p className="text-center text-base md:text-lg text-gray-700 mb-8 md:mb-12 px-4 font-['MB-vintage']">
               100% natural dry fruits and snacks - nutritious, delicious, and free from added sugar.
             </p>
             
@@ -102,10 +102,10 @@ export default function About() {
               {features.map((feature) => (
                 <div key={feature.id} className="bg-amber-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
                   <div className="bg-amber-600 text-white rounded-full w-10 h-10 flex items-center justify-center mb-4 mx-auto">
-                    <span className="font-bold">{feature.id}</span>
+                    <span className="font-bold font-['MB-vintage']">{feature.id}</span>
                   </div>
-                  <h4 className="text-xl font-semibold text-amber-800 mb-3 text-center">{feature.title}</h4>
-                  <p className="text-gray-700 text-center">{feature.description}</p>
+                  <h4 className="text-xl font-semibold text-amber-800 mb-3 text-center font-['MB-vintage']">{feature.title}</h4>
+                  <p className="text-gray-700 text-center font-['MB-vintage']">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -136,14 +136,14 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
-                  <h3 className="text-xl md:text-2xl font-bold text-amber-800 mb-3 md:mb-4">{product.name}</h3>
-                  <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 leading-relaxed">{product.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-amber-800 mb-3 md:mb-4 font-['MB-vintage']">{product.name}</h3>
+                  <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 leading-relaxed font-['MB-vintage']">{product.description}</p>
                   
                   <div className="mb-4 md:mb-6 p-3 md:p-4 bg-amber-50/50 rounded-lg md:rounded-xl border border-amber-100">
-                    <span className="font-semibold text-amber-800 block mb-2">Available Quantities: </span>
+                    <span className="font-semibold text-amber-800 block mb-2 font-['MB-vintage']">Available Quantities: </span>
                     <div className="flex flex-wrap gap-2 md:gap-3">
                       {product.sizes.map((size, idx) => (
-                        <span key={idx} className="px-3 md:px-4 py-1 bg-white rounded-full text-sm md:text-base text-amber-700 border border-amber-200">
+                        <span key={idx} className="px-3 md:px-4 py-1 bg-white rounded-full text-sm md:text-base text-amber-700 border border-amber-200 font-['MB-vintage']">
                           {size}
                         </span>
                       ))}
@@ -154,7 +154,7 @@ export default function About() {
                     {product.benefits.map((benefit, idx) => (
                       <div key={idx} className="flex items-center gap-2 md:gap-3 p-2 bg-white rounded-lg shadow-sm hover:shadow transition-shadow">
                         <BenefitIcon benefit={benefit} />
-                        <span className="text-xs md:text-sm text-gray-700">{benefit}</span>
+                        <span className="text-xs md:text-sm text-gray-700 font-['MB-vintage']">{benefit}</span>
                       </div>
                     ))}
                   </div>
@@ -168,13 +168,13 @@ export default function About() {
       {/* Call to Action */}
       <section className="py-12 md:py-16 bg-amber-600 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Guilt-Free Indulgence, 100% Natural Goodness!</h2>
-          <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 font-['MB-vintage']">Guilt Free Indulgence, 100% Natural Goodness!</h2>
+          <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-4 font-['MB-vintage']">
             Experience the pure taste of nature with Nicelo's premium selection of dry fruits and nuts.
           </p>
           <Link 
             to="/products" 
-            className="inline-block bg-white text-amber-600 px-6 md:px-8 py-2 md:py-3 rounded-full font-bold hover:bg-amber-50 transition-colors text-base md:text-lg"
+            className="inline-block bg-white text-amber-600 px-6 md:px-8 py-2 md:py-3 rounded-full font-bold hover:bg-amber-50 transition-colors text-base md:text-lg font-['MB-vintage']"
           >
             Shop Now
           </Link>

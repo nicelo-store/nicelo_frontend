@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronRight, Star, Truck, Shield, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { LuLeafyGreen } from "react-icons/lu";
 
 export default function EnhancedHeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -53,7 +54,7 @@ export default function EnhancedHeroSection() {
           {/* Animated badge */}
           <div className="overflow-hidden mb-6 mt-10">
             <div className="transform translate-y-0 transition-transform duration-700 ease-out flex justify-center">
-              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-amber-400/90 to-orange-400/90 text-amber-950 text-sm font-semibold inline-flex items-center gap-2 shadow-lg shadow-amber-500/20 border border-amber-300/30">
+              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-amber-400/90 to-orange-400/90 text-amber-950 text-sm font-semibold inline-flex items-center gap-2 shadow-lg shadow-amber-500/20 border border-amber-300/30 font-['MB-vintage']">
                 <span className="w-2 h-2 bg-amber-100 rounded-full animate-ping inline-block" />
                 Premium Selection
               </span>
@@ -68,14 +69,8 @@ export default function EnhancedHeroSection() {
             </span>
           </h1>
           
-          {/* Animated separator */}
-          <div className="relative flex justify-center mb-8">
-            <div className="w-36 h-1 bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0 rounded-full" />
-            <div className="absolute w-16 h-1 bg-white/80 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
-          </div>
-          
           {/* Enhanced description */}
-          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-12 leading-relaxed font-light max-w-3xl mx-auto text-center">
+          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-12 leading-relaxed font-light max-w-3xl mx-auto text-center font-['MB-vintage']">
             Discover our <span className="text-amber-300 font-medium">artisanal selection</span> of premium dates and 
             dry fruits, ethically sourced and delivered fresh to your door.
           </p>
@@ -83,20 +78,17 @@ export default function EnhancedHeroSection() {
           {/* Interactive CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16 px-4 sm:px-0">
             <button className="group relative bg-gradient-to-r from-amber-400 to-orange-500 px-8 py-4 rounded-full shadow-lg shadow-amber-600/30 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-            <Link 
-            to="/products" className="relative z-10 flex items-center justify-center gap-2 text-amber-950 font-semibold">
-
-              
+              <Link to="/products" className="relative z-10 flex items-center justify-center gap-2 text-amber-950 font-semibold font-['MB-vintage']">
                 Shop Items
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-              
               </Link>
               <span className="absolute inset-0 bg-gradient-to-r from-amber-300 to-amber-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
             </button>
             
             <button className="relative overflow-hidden group bg-transparent hover:bg-white/10 backdrop-blur-md text-white font-medium px-8 py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 border border-white/30 hover:border-white/50">
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                100% Natural
+              <span className="relative z-10 flex items-center justify-center gap-2 font-['MB-vintage']">
+              <LuLeafyGreen />
+              Natural
                 <div className="w-2 h-2 bg-green-400 rounded-full group-hover:animate-ping" />
               </span>
               <span className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
@@ -137,8 +129,8 @@ export default function EnhancedHeroSection() {
               <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-amber-600/20`}>
                 <feature.icon className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-amber-200 transition-colors duration-300">{feature.title}</h3>
-              <p className="text-white/80 leading-relaxed text-lg">{feature.description}</p>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-amber-200 transition-colors duration-300 font-['MB-vintage']">{feature.title}</h3>
+              <p className="text-white/80 leading-relaxed text-lg font-['MB-vintage']">{feature.description}</p>
             </div>
           ))}
         </div>

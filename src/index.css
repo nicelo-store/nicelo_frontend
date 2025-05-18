@@ -65,3 +65,9 @@ img {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "MB-vintage";
+  src: url("/font/fonnts.com-MBVinatage-Medium.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

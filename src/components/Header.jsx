@@ -49,7 +49,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative text-stone-100 hover:text-white transition-colors duration-200 px-2 py-1 ${
+                  className={`relative text-stone-100 hover:text-white transition-colors duration-200 px-2 py-1 font-['MB-vintage'] ${
                     location.pathname === link.path ? 'font-semibold' : 'font-medium'
                   }`}
                 >
@@ -110,7 +110,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`group flex items-center justify-between p-3 rounded-lg text-stone-700 hover:bg-stone-100 transition-all duration-200 ${
+                className={`group flex items-center justify-between p-3 rounded-lg text-stone-700 hover:bg-stone-100 transition-all duration-200 font-['MB-vintage'] ${
                   location.pathname === link.path ? 'bg-stone-100 font-semibold' : ''
                 }`}
                 style={{

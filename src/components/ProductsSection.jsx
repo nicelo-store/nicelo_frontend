@@ -70,7 +70,7 @@ const ProductsSection = () => {
             transition={{ duration: 0.8 }}
             className="w-24 h-1 bg-gradient-to-r from-[#F28125] to-[#F28125] mx-auto mb-8 rounded-full"
           />
-          <p className="text-stone-700 text-lg max-w-2xl mx-auto">
+          <p className="text-stone-700 text-lg max-w-2xl mx-auto font-['MB-vintage']">
             Discover our premium selection of dates and dairy products, carefully sourced and delivered to your doorstep.
           </p>
         </motion.div>
@@ -113,23 +113,23 @@ const ProductsSection = () => {
                   {/* Decorative Corner */}
                   <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-100/20 via-amber-50/10 to-transparent rounded-bl-3xl"></div>
                   
-                  <h3 className="text-lg sm:text-xl font-semibold text-amber-700 mb-2 group-hover:text-amber-600 transition-colors duration-300 line-clamp-1 relative">
+                  <h3 className="text-lg sm:text-xl font-semibold text-amber-700 mb-2 group-hover:text-amber-600 transition-colors duration-300 line-clamp-1 relative font-['MB-vintage']">
                     {product.name}
                   </h3>
                   
                   {product.description && (
-                    <span className="inline-flex px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-sm sm:text-sm mb-3 w-fit border border-amber-200/50 hover:bg-amber-100/50 transition-colors duration-300">
+                    <span className="inline-flex px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-sm sm:text-sm mb-3 w-fit border border-amber-200/50 hover:bg-amber-100/50 transition-colors duration-300 font-['MB-vintage']">
                       {product.description}
                     </span>
                   )}
                   
                   <div className="flex items-center justify-between mt-auto">
-                    <span className="text-xs sm:text-xs text-amber-600/80 font-medium">Free Shipping</span>
+                    <span className="text-xs sm:text-xs text-amber-600/80 font-medium font-['MB-vintage']">Free Shipping</span>
                     <button 
                       onClick={() => handleWhatsAppOrder(product)}
                       className="group/btn relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-4 sm:px-4 py-2 sm:py-2 rounded-full shadow-md hover:shadow-lg hover:shadow-amber-200/30 transition-all duration-300"
                     >
-                      <span className="relative z-10 flex items-center gap-2 sm:gap-2 text-sm sm:text-sm">
+                      <span className="relative z-10 flex items-center gap-2 sm:gap-2 text-sm sm:text-sm font-['MB-vintage']">
                         <CircleArrowOutUpRight size={16} className="group-hover/btn:scale-110 transition-transform duration-300" />
                         Buy Now
                       </span>
@@ -153,7 +153,7 @@ const ProductsSection = () => {
             to="/products" 
             className="group relative overflow-hidden bg-stone-100/80 backdrop-blur-md border border-stone-200 hover:border-amber-300 hover:bg-amber-50 text-amber-700 px-8 py-4 rounded-full shadow-sm hover:shadow-amber-200/50 transition-all duration-300 transform hover:-translate-y-1"
           >
-            <span className="relative z-10 flex items-center gap-2 text-lg font-medium">
+            <span className="relative z-10 flex items-center gap-2 text-lg font-medium font-['MB-vintage']">
               View More 
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </span>
